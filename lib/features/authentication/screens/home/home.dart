@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
         body: SingleChildScrollView(
       child: Column(
         children: [
-          TPrimaryHeaderContainer(
+          const TPrimaryHeaderContainer(
             child: Column(
               children: [
                 THomeAppBar(),
@@ -57,9 +57,8 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.all(TSizes.defaultSpace),
             child: Column(
               children: [
-
                 /// -- Promo Sliders
-                TPromoSlider(banners: [
+                const TPromoSlider(banners: [
                   TImages.arcaneBanner,
                   TImages.doomBringerBanner,
                   TImages.nocturnumBanner
