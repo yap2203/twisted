@@ -4,6 +4,7 @@ import 'package:Twisted/features/authentication/screens/home/widgets/home_appbar
 import 'package:Twisted/features/authentication/screens/home/widgets/home_categories.dart';
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
+import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/image_strings.dart';
@@ -43,14 +44,15 @@ class HomeScreen extends StatelessWidget {
                       THomeCategories(),
                     ],
                   ),
-                )
+                ),
+                SizedBox(height: TSizes.spaceBtwSections,)
               ],
             ),
           ),
 
           /// -- Body
           Padding(
-            padding: EdgeInsets.all(TSizes.defaultSpace),
+            padding: const EdgeInsets.all(TSizes.defaultSpace),
             child: Column(
               children: [
                 /// -- Promo Sliders
@@ -59,22 +61,14 @@ class HomeScreen extends StatelessWidget {
                   TImages.doomBringerBanner,
                   TImages.nocturnumBanner
                 ]),
-                SizedBox(height: TSizes.spaceBtwItems),
+                const SizedBox(height: TSizes.spaceBtwItems),
+
+                /// -- Heading
+                TSectionHeading(title: 'Newest Skins', onPressed: (){}),
+                const SizedBox(height: TSizes.spaceBtwItems,),
 
                 /// -- Recent Products
-                GridView.builder(
-                  itemCount: 4,
-                  shrinkWrap: true,
-                  padding: EdgeInsets.zero,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: TSizes.gridViewSpacing,
-                    crossAxisSpacing: TSizes.gridViewSpacing,
-                    mainAxisExtent: 288,
-                  ),
-                  itemBuilder: (_, index) => TProductCardVertical(),
-                ),
+                TGridLayout(itemCount: 4,itemBuilder: (_, index) => const TProductCardVertical(),),
               ],
             ),
           ),
@@ -84,3 +78,5 @@ class HomeScreen extends StatelessWidget {
     ));
   }
 }
+
+

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:Twisted/utils/helpers/helper_functions.dart';
 
 import '../../../utils/constants/colors.dart';

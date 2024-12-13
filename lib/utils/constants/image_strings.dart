@@ -20,11 +20,13 @@ class TImages{
   // -- Rarity Icon
   static const String rpIcon = "assets/images/rp-icon.png";
   static const String exclusiveIcon = "assets/images/exclusive-rarity-icon.png";
+  static const String exclusiveIcon2 = "assets/images/exclusive-rarity-icon2.png";
 
   // -- Products (Vandal)
   static const String arcaneVandal = "assets/images/products/vandal/arcane_vandal.png";
   static const String kuronamiVandal = "assets/images/products/vandal/kuronami_vandal.png";
-
+  static const String rgxVandal = "assets/images/products/vandal/rgx_vandal.png";
+  static const String reaverVandal = "assets/images/products/vandal/reaver_vandal.png";
 
   // -- Banners
   static const String arcaneBanner = "assets/images/banners/arcane-banner.png";
@@ -35,6 +37,19 @@ class TImages{
   static const String onBoardingImage1 = "assets/images/onboarding1.gif";
   static const String onBoardingImage2 = "assets/images/onboarding2.gif";
   static const String onBoardingImage3 = "assets/images/onboarding3.gif";
+
+  // -- Authentication Images
+  static const String emailVerify = "assets/images/email_verify.gif";
+  static const String verifySuccess = "assets/images/verify_success.gif";
+
+  // -- Animation
+  static const String docerAnimation = "assets/animation/docer_animation.json";
+
+  // -- 3d Gun
+  static const String arcane3dVandal = "assets/3d/arcane_vandal.glb";
+
+  // -- user pic
+  static const String user = "assets/images/user.png";
 
 
 

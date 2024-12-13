@@ -2,6 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class THelperFunctions {
+  static Color? getColor(String value){
+
+    if(value == 'Green'){
+      return Colors.green;
+    }else if(value == 'Red'){
+      return Colors.red;
+    }else if(value == 'Blue'){
+      return Colors.blue;
+    }
+    else if(value == 'Yellow'){
+      return Colors.yellow;
+    }
+    return null;
+  }
 
   static bool isDarkMode(BuildContext context) {
     return Theme

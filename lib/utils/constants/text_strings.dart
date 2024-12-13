@@ -35,6 +35,15 @@ class TTexts{
   static const String resendEmailIn = "Resend Email In";
   static const String and = " And ";
 
+  // -- Authentication Headings Text
+  static const String forgetPasswordTitle = "Forget password";
+  static const String changeYourPasswordTitle = "Password Reset Email Sent";
+  static const String confirmEmail = "Verify your email address!";
+  static const String confirmEmailSubTitle = "Congratulations Your Account Awaits: Verify Your Email to start";
+  static const String tContinue = "Continue";
+  static const String yourAccountCreatedTitle = "Your account successfully created!";
+  static const String yourAccountCreatedSubTitle = "Welcome to Your Ultimate Valorant Skins App. Your Account is Created. Unleash the Joy of Seamless Skins Viewing";
+
   // -- AppBar
   static const String homeAppbarTitle = "Valorant Skins";
   static const String homeAppbarSubTitle = "Twisted";

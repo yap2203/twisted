@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:Twisted/common/widgets/login_signup/social_buttons.dart';
@@ -6,6 +7,7 @@ import 'package:Twisted/utils/constants/sizes.dart';
 import '../../../../common/widgets/login_signup/form_divider.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
+import '../login/login.dart';
 
 class SignupScreen extends StatelessWidget{
   const SignupScreen ({super.key});
@@ -14,7 +16,13 @@ class SignupScreen extends StatelessWidget{
   Widget build(BuildContext context){
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(onPressed:() => Get.offAll(()=> const LoginScreen()), icon: const Icon(CupertinoIcons.clear),
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defaultSpace),
@@ -27,6 +35,7 @@ class SignupScreen extends StatelessWidget{
 
               ///Form
               const TSignupForm(),
+              const SizedBox(height: TSizes.spaceBtwSections),
 
               /// Divider
               TFormDivider(dividerText: TTexts.orSignInWith.capitalize!),
