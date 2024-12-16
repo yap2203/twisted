@@ -1,4 +1,3 @@
-import 'package:Twisted/data/respositories/authentication/authentication_repository.dart';
 import 'package:Twisted/features/authentication/screens/signup/verify_email.dart';
 import 'package:Twisted/utils/constants/image_strings.dart';
 import 'package:Twisted/utils/popups/loaders.dart';
@@ -6,7 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../data/respositories/user/user_repository.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
+import '../../../../data/repositories/user/user_repository.dart';
 import '../../../../utils/network/network_manager.dart';
 import '../../../../utils/popups/full_screen_loader.dart';
 import '../../models/user_model.dart';

@@ -1,6 +1,4 @@
-import 'package:Twisted/common/widgets/success_screen/success_screen.dart';
-import 'package:Twisted/data/respositories/authentication/authentication_repository.dart';
-import 'package:Twisted/features/authentication/screens/login/login.dart';
+import 'package:Twisted/data/repositories/authentication/authentication_repository.dart';
 import 'package:Twisted/utils/constants/text_strings.dart';
 import 'package:Twisted/utils/helpers/helper_functions.dart';
 import 'package:flutter/cupertino.dart';

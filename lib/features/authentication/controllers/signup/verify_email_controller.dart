@@ -7,7 +7,7 @@ import 'package:Twisted/utils/constants/text_strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-import '../../../../data/respositories/authentication/authentication_repository.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../utils/popups/loaders.dart';
 
 class VerifyEmailController extends GetxController{

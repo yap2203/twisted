@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
@@ -20,6 +21,8 @@ class AuthenticationRepository extends GetxController{
   ///Variables
 final deviceStorage = GetStorage();
 final _auth = FirebaseAuth.instance;
+
+User? get authUser => _auth.currentUser;
 
 @override
   void onReady(){
@@ -41,6 +44,7 @@ final _auth = FirebaseAuth.instance;
     //   print('===================GET STORAGE================');
     //   print(deviceStorage.read('IsFirstTime'));
     // }
+
     deviceStorage.writeIfNull('IsFirstTime', true);
     deviceStorage.read('IsFirstTime') != true
         ? Get.offAll(() => const LoginScreen())
@@ -52,7 +56,21 @@ final _auth = FirebaseAuth.instance;
   /* ----------------------------------------- Email & Password Sign in ------------------------------*/
 
 /// Sign In
-
+Future<UserCredential> loginWithEmailAndPassword(String email, String password) async{
+  try{
+    return await _auth.signInWithEmailAndPassword(email: email, password: password);
+  } on FirebaseAuthException catch (e){
+    throw TFirebaseAuthException(e.code).message;
+  } on FirebaseException catch (e){
+    throw TFirebaseException(e.code).message;
+  }on FormatException catch (_){
+    throw const TFormatException();
+  }on PlatformException catch (e){
+    throw TPlatformException(e.code).message;
+  }catch (e){
+    throw 'Something went wrong. Please try again!';
+  }
+}
 
 /// Register
 Future<UserCredential> registerWithEmailAndPassword(String email, String password) async{
@@ -94,6 +112,39 @@ Future<void> sendEmailVerification() async{
 ///Forget Password
 
 
+/* ---------------------------------- Federated identity & social sign-in ------------------------------------------*/
+
+  /// Google
+  Future<UserCredential?> signInWithGoogle() async{
+    try{
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+
+      final GoogleSignInAuthentication? googleAuth = await userAccount?.authentication;
+
+      // New Credential
+      final credentials = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+      );
+
+      return await _auth.signInWithCredential(credentials);
+
+    } on FirebaseAuthException catch (e){
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e){
+      throw TFirebaseException(e.code).message;
+    }on FormatException catch (_){
+      throw const TFormatException();
+    }on PlatformException catch (e){
+      throw TPlatformException(e.code).message;
+    }catch (e){
+      if(kDebugMode) print('Something went wrong: $e');
+      return null;
+    }
+  }
+
+  /// Facebook
+
 
 /* ----------------------------------./end Federated identity & social sign-in -------------------------------------*/
 
@@ -101,6 +152,7 @@ Future<void> sendEmailVerification() async{
   Future<void> logout() async{
     try{
       await FirebaseAuth.instance.signOut();
+      await GoogleSignIn().signOut();
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e){
       throw TFirebaseAuthException(e.code).message;

@@ -2,17 +2,21 @@ import 'package:Twisted/common/widgets/appbar/appbar.dart';
 import 'package:Twisted/common/widgets/images/t_circular_image.dart';
 import 'package:Twisted/common/widgets/texts/section_heading.dart';
 import 'package:Twisted/features/personalization/screens/profile/widgets/profile_menu.dart';
+import 'package:Twisted/utils/constants/shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: TAppBar(
         showBackArrow: true,
@@ -29,8 +33,20 @@ class ProfileScreen extends StatelessWidget {
               width: double.infinity,
               child: Column(
                 children: [
-                  TCircularImage(image: TImages.user,width: 80,height: 80,),
-                  TextButton(onPressed: (){}, child: Text('Change Profile Picture')),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      print('Network Image URL: $networkImage');
+                      final image = networkImage.isNotEmpty ? networkImage : TImages.user;
+                      return controller.imageUploading.value
+                          ? const TShimmerEffect(width: 80, height: 80,radius: 80,)
+                          : TCircularImage(
+                        image: image,
+                        width: 80,
+                        height: 80,
+                        isNetworkImage: networkImage.isNotEmpty,
+                      );
+                    }),
+                    TextButton(onPressed: ()=> controller.uploadUserProfilePicture(), child: Text('Change Profile Picture')),
                 ],
               ),
             ),

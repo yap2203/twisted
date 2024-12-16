@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
-import '../../../../data/respositories/authentication/authentication_repository.dart';
+import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../utils/constants/sizes.dart';
 
 class SettingsScreen extends StatelessWidget {

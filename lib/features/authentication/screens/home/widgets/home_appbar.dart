@@ -1,4 +1,6 @@
+import 'package:Twisted/features/personalization/controllers/user_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/skins_cart/cart_menu_icon.dart';
@@ -12,6 +14,7 @@ class THomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(UserController());
     return TAppBar(
       title: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
