@@ -91,6 +91,7 @@ class TProductCardHorizontal extends StatelessWidget {
                 ),
 
                 const Spacer(),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

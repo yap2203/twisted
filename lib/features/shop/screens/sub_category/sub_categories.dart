@@ -5,6 +5,8 @@ import 'package:Twisted/common/widgets/texts/section_heading.dart';
 import 'package:Twisted/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../common/widgets/layouts/grid_layout.dart';
+import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../utils/constants/sizes.dart';
 
 class SubCategoriesScreen extends StatelessWidget {
@@ -30,15 +32,7 @@ class SubCategoriesScreen extends StatelessWidget {
                 TSectionHeading(title: 'Vandal Skins', onPressed: (){},),
                 const SizedBox(height: TSizes.spaceBtwItems /2,),
 
-                SizedBox(
-                  height: 120,
-                  child: ListView.separated(
-                    itemCount: 4,
-                      scrollDirection: Axis.horizontal,
-                      separatorBuilder: (context,index) => const SizedBox(width: TSizes.spaceBtwItems,),
-                      itemBuilder: (context,index) => const TProductCardHorizontal()
-                  ),
-                ),
+                TGridLayout(itemCount: 4, itemBuilder: (_, index) => const TProductCardVertical()),
               ],
             )
           ],

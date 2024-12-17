@@ -2,7 +2,7 @@ import 'package:Twisted/common/widgets/appbar/appbar.dart';
 import 'package:Twisted/common/widgets/images/t_circular_image.dart';
 import 'package:Twisted/common/widgets/texts/section_heading.dart';
 import 'package:Twisted/features/personalization/screens/profile/widgets/profile_menu.dart';
-import 'package:Twisted/utils/constants/shimmer.dart';
+import 'package:Twisted/common/widgets/shimmers/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:iconsax/iconsax.dart';

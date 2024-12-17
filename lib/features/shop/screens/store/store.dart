@@ -11,14 +11,16 @@ import 'package:Twisted/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/rarity/rarity_card.dart';
+import '../../controllers/category_controller.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance.featuredCategories;
     return DefaultTabController(
-      length: 6,
+      length: categories.length,
       child: Scaffold(
         appBar: TAppBar(
           title: Text(
@@ -85,26 +87,15 @@ class StoreScreen extends StatelessWidget {
                   ),
 
                   /// Tabs
-                  bottom: const TTabBar(
-                    tabs: [
-                      Tab(child: Text('Vandal')),
-                      Tab(child: Text('Phantom')),
-                      Tab(child: Text('Guardian')),
-                      Tab(child: Text('Bulldog')),
-                      Tab(child: Text('Spectre')),
-                      Tab(child: Text('Stinger')),
-                    ],
-                  )),
+                  bottom: TTabBar(
+                      tabs: categories
+                          .map((category) => Tab(child: Text(category.name)))
+                          .toList())
+              ),
             ];
           },
-          body: const TabBarView(children: [
-            TCategoryTab(),
-            TCategoryTab(),
-            TCategoryTab(),
-            TCategoryTab(),
-            TCategoryTab(),
-            TCategoryTab(),
-          ]),
+          body: TabBarView(children: categories.map((category) => TCategoryTab(category: category)).toList()
+          ),
         ),
       ),
     );
